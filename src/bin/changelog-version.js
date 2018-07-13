@@ -25,6 +25,7 @@ program
   A new file (defined by --changelogFile) will be created if one does not exist.`)
   .option('--newUnreleasedText [textToPrepend]', `The text to prepend to the log file.
                                        Default is "# [UNRELEASED]\\n\\n".`)
+  .option('--newUnreleasedDetail [detailToAdd]', 'If present, adds the provided text under the new unreleased heading')
   .action(async function (action, opt) {
     await runPrepare(opt)
   })

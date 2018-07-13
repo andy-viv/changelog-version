@@ -1,3 +1,7 @@
+# UNRELEASED
+
+- Added `--newUnreleasedDetail` detail to allow pre-populating the release detail
+
 # 2.1.1 - Wed May 30 2018 20:00:10
 
 - Added `--requireUnreleasedEntryFailMsg` to allow the specification of a custom fail message

@@ -26,6 +26,7 @@ export default class PrepareStamper extends BaseStamper {
     super(options)
 
     this.newUnreleasedText = options.newUnreleasedText || '# [UNRELEASED]\n\n'
+    this.newUnreleasedDetail = options.newUnreleasedDetail
   }
 
   /**
@@ -40,8 +41,11 @@ export default class PrepareStamper extends BaseStamper {
 
     // don't do any changes if the stamp already exists
     if (!changelogContents.includes(this.newUnreleasedText)) {
-      changelogContents = this.newUnreleasedText + changelogContents
-
+      changelogContents = [
+        this.newUnreleasedText,
+        this.newUnreleasedDetail ? `${this.newUnreleasedDetail}\n\n` : '',
+        changelogContents
+      ].join('')
       await this._writeChangelog(changelogContents)
     }
   }

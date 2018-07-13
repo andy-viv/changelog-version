@@ -140,6 +140,7 @@ $ changelog-version prepare --help
 
     --newUnreleasedText [textToPrepend]  The text to prepend to the log file.
                                            Default is "# [UNRELEASED]\n\n".
+    --newUnreleasedDetail [detailToAdd]  If present, adds the provided text under the new unreleased heading
     -h, --help                           output usage information
 ```
 

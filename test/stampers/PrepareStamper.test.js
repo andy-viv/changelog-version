@@ -67,4 +67,20 @@ describe('PrepareStamper class', () => {
     expect(data).to.equal(`# [NEW_RELEASE]\n\n# a.b.c`)
     fsMock.restore()
   })
+
+  it('should allow for custom unreleased detail text placed below the new heading', async () => {
+    fsMock({
+      'CHANGELOG.md': '# a.b.c'
+    })
+
+    const ps = new PrepareStamper({
+      newUnreleasedText: '# [NEW_RELEASE]\n\n',
+      newUnreleasedDetail: '* Example release details\n* and another'
+    })
+    await ps.stampUnreleased()
+
+    const data = await readFileAsync(join(projectRoot, 'CHANGELOG.md'), 'utf8')
+    expect(data).to.equal(`# [NEW_RELEASE]\n\n* Example release details\n* and another\n\n# a.b.c`)
+    fsMock.restore()
+  })
 })
